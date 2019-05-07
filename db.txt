@@ -1,0 +1,17 @@
+create database plans;
+
+use plans;
+
+create table plans(zipid int(5),plan1 varchar(50),plan2 varchar(50),plan3 varchar(50));
+
+insert into plans(zipid ,plan1 ,plan2 ,plan3) values(90001,'Minimum Coverage PPO $293.47','Bronze 60 HDHP PPO $297.88','Bronze 60 PPO $300.97');
+
+insert into plans(zipid ,plan1 ,plan2 ,plan3) values(90002,'Minimum Coverage PPO $294.47','Bronze 60 HDHP PPO $298.88','Bronze 60 PPO $301.97');
+
+insert into plans(zipid ,plan1 ,plan2 ,plan3) values(90003,'Minimum Coverage PPO $295.47','Bronze 60 HDHP PPO $299.88','Bronze 60 PPO $302.97');
+
+insert into plans(zipid ,plan1 ,plan2 ,plan3) values(90004,'Minimum Coverage PPO $296.47','Bronze 60 HDHP PPO $300.88','Bronze 60 PPO $301.97');
+
+insert into plans(zipid ,plan1 ,plan2 ,plan3) values(90005,'Minimum Coverage PPO $297.47','Bronze 60 HDHP PPO $302.88','Bronze 60 PPO $303.97');
+
+select * from plans;
