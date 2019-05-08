@@ -1,0 +1,1425 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%> 
+ <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+
+#contentPanel {
+    clear: both;
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    position: relative;
+}
+
+#header {
+    float: left;
+    width: 1000px;
+    height: 122px;
+
+}
+
+.headerPageTitle {
+    font-size: 21px;
+    color: #999999;
+    font-family: 'CenturyGothic', sans-serif;
+    position: absolute;
+    width: 320px;
+    margin-top: 6px;
+    font-weight: normal;
+}
+
+#header .headLoginCont {
+    float: left;
+    width: 100%;
+    height: 25px;
+}
+/* 
+.hr{
+
+   background: #0082de;
+   height: 5px;
+} */ 
+
+.borderDivider1 {
+    background: #0082de;
+    width: 100%;
+    padding: 10px 0px;
+    padding-top: 2.5px;
+    padding-right: 0px;
+    padding-bottom: 2.5px;
+    padding-left: 0px;
+}
+
+
+#header #topLogin {
+    float: right;
+    color: #464646;
+    line-height: 24px;
+    width: auto;
+}
+
+#header #topLogin span {
+    font-weight: normal;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+
+strong, b {
+    font-weight: bold;
+}
+
+#header #topLogin a, #header #topLogin span {
+    float: left;
+    padding: 0 0 0 14px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 14px;
+    color: #363636;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#header .topContacts .contIcon {
+    float: left;
+    padding-right: 10px;
+    margin-left: -34px;
+}
+
+
+
+
+#header .headerRow {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-top: 26px;
+}
+
+
+
+#header .topContacts {
+    float: right;
+    margin-top: -45px;
+}
+
+#header .topContacts .contIcon {
+    float: left;
+    padding-right: 10px;
+    margin-left: -34px;
+}
+
+#header .topLogos, #header .topContacts {
+    position: relative;
+}
+
+
+#header .topContacts .contPhone {
+    font-family: 'ProximaNova-bold', sans-serif;
+    float: left;
+    font-size: 16px;
+    color: #464646;
+}
+
+a:active, a:visited {
+    color: #0082de;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+strong, a{
+    font-weight: bold;
+}
+
+#header .topContacts .contTelTime {
+    float: left;
+}
+
+#header .topContacts .clearRight {
+    clear: right;
+}
+
+#header .topContacts .contPhone, #header .topContacts .contHeading, #header .topContacts .contTime {
+    font-family: 'ProximaNova-Semibold', sans-serif;
+    float: left;
+    font-size: 16px;
+    color: #464646;
+}
+
+.contTime{
+    font-weight: bold;
+
+}
+
+
+#contentOverlap {
+    position: absolute;
+    z-index: 998;
+    display: none;
+    top: 70px;
+    background: #fff;
+    opacity: 0.1;
+    filter: alpha(opacity = 10);
+}
+
+#contentToolbar {
+    float: right;
+    width: auto;
+    margin: 30px 0 15px 0;
+}
+
+#contentToolbar .contToolRight {
+    float: right;
+    width: auto;
+}
+
+#contentPanel .enrollTextContent {
+    float: left;
+    width: 100%;
+}
+
+.bluePanel {
+    background: #0082de;
+    width: 100%;
+    padding: 10px 0px;
+}
+
+#contentPanel h2 {
+    font-family: Arial;
+    font-size: 32px;
+    color: #0082ca;
+    font-weight: normal;
+    line-height: 34px;
+    margin-top: 10px;
+    margin-bottom: 16px;
+}
+
+h2.smWhite {
+    color: #ffffff !important;
+    font-size: 30px;
+    line-height: 36px;
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    margin: 10px 0px;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+h3.heroWhite {
+    color: #ffffff !important;
+    font-size: 20px;
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    margin: 0px 0px 20px;
+}
+
+/* body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'ProximaNova-Regular', Arial, Helvetica, sans-serif;
+    color: #464646;
+    line-height: 18px;
+}
+   */  
+    .helpMe_Choose {
+    border-bottom: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+
+.helpMe_content p:first-child {
+    font-family: "CenturyGothic";
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.helpMe_content {
+    width: 56%;
+    float: left;
+    line-height: 18px;
+}
+
+.helpMe_Choose #contentPanel .btn-done {
+    margin-bottom: 50px;
+}
+
+.btn-done {
+    background-color: #0082de;
+    border: 1px solid #014D83;
+    margin-top: 30px;
+}
+
+.btn-default {
+    color: #ffffff;
+    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    height: 43px;
+    font-family: 'Century Gothic';
+    font-size: 20px;
+    white-space: nowrap;
+    cursor: pointer;
+    width: 190px;
+}
+
+.btn-default {
+    color: #ffffff;
+    border-radius: 8px;
+    height: 43px;
+    font-family: 'CenturyGothic' !important;
+    font-size: 20px !important;
+    white-space: nowrap;
+    cursor: pointer;
+    width: 190px;
+}
+
+#contentPanel #openEnrollment {
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    font-size: 30px;
+    color: #0082de;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#contentPanel #openEnrollment {
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    font-size: 30px;
+    color: #0082de;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#contentPanel .enrollTextCont {
+    float: left;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+#contentPanel .enrollPara {
+    font-family: 'ProximaNova-Regular', sans-serif;
+    float: left;
+    width: 1000px;
+    color: #0082de;
+    line-height: 18px;
+    font-size: 16px;
+    padding: 10px 0px 0px;
+}
+
+#contentPanel .enrollPara p {
+    margin-bottom: 15px;
+}
+
+.lpText {
+    font-family: 'ProximaNova-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #363636;
+}
+
+#contentPanel p label.labelTitle, span.labelTitle {
+    border-bottom: 1px dotted #999;
+    line-height: 20px;
+}
+
+.lpText {
+    font-family: 'ProximaNova-Regular', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #363636;
+}
+
+.borderDivider {
+    border-bottom: 1px solid #d0d0d0;
+    width: 100%;
+}
+
+            .error {
+                color: red
+            }
+
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+label {
+    cursor: default;
+}
+
+ul.plansFormElms {
+    padding-left: 170px;
+   
+    list-style: none;
+}
+
+ul.plansFormElms li {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+#contentPanel {
+    clear: both;
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+    position: relative;
+}
+
+
+
+#contentPanel .enrollPlanArea {
+    clear: left;
+    float: left;
+    width: 100%;
+    margin: 20px 0 40px 0;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 40px;
+    margin-left: 0px;
+    position: relative;
+}
+
+#contentPanel .planFormSection {
+    float: left;
+    width: 883px;
+    margin-top: -5px;
+}
+
+#contentPanel ul.plansFormElms li label.labelTitle {
+    border-bottom: 1px dotted #999;
+    border-bottom-width: 1px;
+    border-bottom-style: dotted;
+    border-bottom-color: rgb(153, 153, 153);
+    line-height: 20px;
+}
+
+#contentPanel ul.plansFormElms li label {
+    float: left;
+    text-align: right;
+    margin-right: 5px;
+    font-size: 16px;
+    color: #363636;
+    line-height: 21px;
+    }
+
+
+   .planPlanRate {
+    position: absolute;
+    right: 0px;
+    width: 500px;
+    margin-top: -5px;
+    }
+    
+  .planPlanRate h4 {
+    clear: left;
+    margin-bottom: 15px;
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #363636;
+    line-height: 20px;
+}
+    
+.planPlanRate h3, h3.genericH3 {
+    clear: left;
+    font-family: Century Gothic;
+    font-size: 24px;
+    color: #0082DE;
+    font-weight: normal;
+    line-height: 26px;
+    margin-bottom: 15px;
+}
+
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h4, .smTitle {
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #363636;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+.quoteRemoveRow {
+    float: left;
+    background-image: urlhttps://bscapply.com/phx/images/buttonTile_Nm.png);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    width: 15px;
+    height: 15px;
+    text-indent: -999px;
+    margin: 5px 15px 0 20px !important;
+    margin-top: 5px !important;
+    margin-right: 15px !important;
+    margin-bottom: 0px !important;
+    margin-left: 20px !important;
+    outline: none;
+    outline-color: initial;
+    outline-style: none;
+    outline-width: initial;
+}
+
+.quoteButton{
+    float: left;
+   
+    background-image: url(https://bscapply.com/phx/images/buttonTile_Nm.png);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    height: 33px;
+    border: 0px;
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    font-size: 14px;
+    color: #505050;
+    font-weight: bold;
+    cursor: pointer;
+    width: 112px;
+}
+
+.quoterow {
+  background-image: url(https://bscapply.com/phx/images/buttonTile_Nm.png);
+    clear: left;
+    float: left;
+    margin: 0 0 5px 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    padding: 0;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    position: relative;
+    list-style: none;
+    list-style-type: none;
+    list-style-position: initial;
+    list-style-image: initial;
+    height: 48px;
+    width: 372px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 33px;
+    border: 0px;
+    border-top-color: initial;
+    border-top-style: initial;
+    border-top-width: 0px;
+    border-right-color: initial;
+    border-right-style: initial;
+    border-right-width: 0px;
+    border-bottom-color: initial;
+    border-bottom-style: initial;
+    border-bottom-width: 0px;
+    border-left-color: initial;
+    border-left-style: initial;
+    border-left-width: 0px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    font-size: 14px;
+    color: #505050;
+    font-weight: bold;
+    cursor: pointer;
+    width: 112px;
+}
+
+
+
+.plansSubmit {
+    float: left;
+    margin-left: 130px;
+    width: 315px;
+    margin-top: 5px;
+}
+
+
+
+/* .plansSubmit input.quoteSubButton {
+    float: left;
+    background: url(https://bscapply.com/phx/images/buttonTile_Nm.png) no-repeat;
+    height: 33px;
+    border: 0px;
+    font-size: 0px;
+    text-indent: -999em;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    width: 120px;
+} */
+
+
+.greyPanel {
+    background: #ebebeb;
+    width: 100%;
+    padding: 10px 0px 0px;
+    float: left;
+}
+.LastCol {
+    margin-right: 0px;
+}
+#contentPanel {
+    clear: both;
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.linksColumnRow {
+    clear: left;
+    float: left;
+    width: 100%;
+    /* padding-top: 10px; */
+}
+.colFloat {
+    float: left;
+    float: none\9;
+}
+
+.quoteLinkColumnLP {
+    float: left;
+    margin-right: 35px;
+    width: 310px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.quoteLinkColumnLP h3 {
+    font-size: 16px;
+    color: #666666;
+    font-family: 'CenturyGothic', Arial, sans-serif;
+    height: 48px;
+}
+
+.quoteLinkColumnLP h3 {
+    font-size: 16px;
+    color: #666666;
+    font-family: 'CenturyGothic', Arial, sans-serif;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.quoteLinkColumnLP {
+    float: left;
+    margin-right: 35px;
+    width: 310px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.lineHt16 {
+    line-height: 16px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+a:active, a:visited {
+    color: #0082de;
+    text-decoration: none;
+}
+
+
+
+.colFloat {
+    float: left;
+    float: none\9;
+}
+
+.background_container {
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.footer-general {
+    background: url(https://bscapply.com/phx/images/footer-top.png) repeat-x #262626;
+    color: #ffffff;
+    height: 216px;
+    font-family: 'ProximaNova-Regular', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: inherit;
+}
+
+.col-md-6 {
+    width: 50%;
+    float: left;
+    }
+.footer-general .subhead {
+    font-size: 22px;
+    color: #ebebeb;
+    padding-top: 15px;
+    padding-bottom: 18px;
+    line-height: 1.4;
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.colFloat {
+    float: left;
+    float: none\9;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: top;
+}
+
+.icon-phone {
+    background: url(https://bscapply.com/phx/images/icon_states.png) no-repeat -49px -10px;
+    width: 16px;
+    min-height: 24px !important;
+    vertical-align: top;
+    margin-top: 12px;
+}
+
+.footer-general .ul, .footer-general p {
+    list-style: none;
+}
+
+.footer-general p {
+    font-size: 16px;
+    color: #bfbfbf;
+    line-height: 0.4 !important;
+    margin-bottom: 0 !important;
+}
+
+.col-md-6 {
+    width: 50%;
+    float: left;
+}
+
+.footer-line {
+    background: url(https://bscapply.com/phx/images/footer-separator.png) no-repeat;
+}
+
+.lineHt16 {
+    line-height: 16px;
+}
+
+.LastCol {
+    margin-right: 0px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.footer-copyright #contentPanel {
+    padding-top: 20px !important;
+    text-align: center !important;
+}
+
+.col-md-12 {
+    width: 100%;
+    float: left;
+}
+
+.footer-copyright p {
+    font-size: 15.5px;
+    color: #bfbfbf;
+    margin-bottom: 0 !important;
+    line-height: 0.3 !important;
+    text-align: left;
+}
+
+.footer-copyright small {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #bfbfbf;
+}
+
+.hideOnLoad {
+    display: none;
+}
+
+.footer-general a, .footer-general a:link, .footer-general a:visited {
+    color: #bfbfbf;
+    text-decoration: none;
+}
+
+.footer-copyright {
+    background: url(https://bscapply.com/phx/images/footer-bottom.png) repeat-x #262626;
+    color: #ffffff;
+    height: 96px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+}
+
+.icon-facebook {
+    background: url(https://bscapply.com/phx/images/icon-social-media.png) no-repeat 0 0;
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+}
+
+.icon-twitter {
+    background: url(https://bscapply.com/phx/images/icon-social-media.png) no-repeat 0 -86px;
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+}
+
+.icon-youtube {
+    background: url(https://bscapply.com/phx/images/icon-social-media.png) no-repeat 0 -172px;
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+}
+
+.truste-phx {
+    padding: 20px 0 0 7px;
+}
+
+body.quotePage {
+    background: #fff url(https://bscapply.com/phx/images/main-bg.jpg) repeat-x;
+}
+
+#contentPanel {
+    clear: both;
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.disclaimerPanel {
+    float: left;
+    margin: 30px 0px;
+    color: #363636;
+    font-family: 'ProximaNova-Regular', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+
+
+        </style>
+<title>Find plans and apply for medical, dental and term life coverage in California - Blue Shield of California</title>
+
+</head>
+<body>
+
+<script>              
+    
+              
+              function zipCodeValidator()
+              {
+                  var num = document.forms.myForm.zip_id.value;
+                   matches=num.match(/^[0-9]{5}(?:-[0-9]{4})?$/);
+                    startWith=/^9[0-9].*$/;
+                    if(matches)
+                           {
+                                  if(!(startWith.test(matches[0])))
+                                        {
+                                               alert("Invalid ZIP");
+                                        }
+                           }
+              }
+              
+              
+              function mySelf(){
+                   
+                  var myselfdtbtn = document.forms.myForm.myselfDate;
+                  var myselfrvbtn = document.forms.myForm.remove ;
+                   myselfdtbtn.style.visibility = 'visible';
+                   myselfrvbtn.style.visibility = 'visible';                     
+                   
+               }              
+              
+         function myselfbtnDisplay(){
+                
+                  var valueDate = document.forms.myForm.myselfDate.value;
+                
+                  if ( valueDate != null || valueDate != '') 
+                  
+              {
+                     document.getElementById('plansButton').disabled=false;
+              }  
+                             
+                  
+              }   
+       
+              function Remove()
+              {
+                     var elemDate=document.forms.myForm.myselfDate;
+                     var elemRemove=document.forms.myForm.remove;
+                    elemDate.style.visibility='hidden';
+                    elemRemove.style.visibility='hidden';
+                   document.getElementById('plansButton').disabled=true; 
+              }
+              
+              function mypartner(){
+                   
+                  var patdtbtn = document.forms.myForm.mypartnerDate ;
+                  var patrvbtn = document.forms.myForm.patremove ;
+                  patdtbtn.style.visibility = 'visible';
+                  patrvbtn.style.visibility = 'visible';                    
+                   
+               }              
+                           
+              
+              function patRemove()
+              {
+                     var elemDate=document.forms.myForm.mypartnerDate;
+                     var elemRemove=document.forms.myForm.patremove;
+                    elemDate.style.visibility='hidden';
+                    elemRemove.style.visibility='hidden';
+                   
+              }
+              
+             
+              
+              function myDependent1(){
+                   
+                  var depdtbtn = document.getElementById("depDate1") ;
+                  var deprvbtn = document.getElementById("depremove1") ;
+                  var depbtn = document.getElementById("dependent2")
+                  depdtbtn.style.visibility = 'visible';
+                  deprvbtn.style.visibility = 'visible';                    
+                  depbtn.style.visibility = 'visible';
+                  
+               }              
+                           
+              
+              function depRemove1()
+              {
+                     var elemDate=document.getElementById("depDate1");
+                     var elemRemove=document.getElementById("depremove1");
+                     var depbtn = document.getElementById("dependent2")
+                    elemDate.style.visibility='hidden';
+                    elemRemove.style.visibility='hidden';
+                    depbtn.style.visibility = 'hidden';
+                    
+                    
+              }
+              
+              function myDependent2(){
+                   
+                  var depdtbtn = document.getElementById("depDate2") ;
+                  var deprvbtn = document.getElementById("depremove2") ;
+                  var depbtn3 = document.getElementById("dependent3")
+                  depdtbtn.style.visibility = 'visible';
+                  deprvbtn.style.visibility = 'visible';                    
+                  depbtn3.style.visibility = 'visible';
+                  
+               }              
+              
+              function depRemove2()
+              {
+                     var elemDate=document.getElementById("depDate2");
+                     var elemRemove=document.getElementById("depremove2");
+                     var depbtn = document.getElementById("dependent2")
+                      var depbtn3 = document.getElementById("dependent3")
+                    elemDate.style.visibility='hidden';
+                    elemRemove.style.visibility='hidden';
+                    depbtn.style.visibility = 'hidden';
+                    depbtn3.style.visibility = 'hidden';
+              }
+              
+              function myDependent3(){
+                  alert("Maximum of Two Dependents can be added");
+              }
+              
+              </script>
+          
+          <div id="contentPanel">
+              <div id="header">
+     
+                           <div class="headLoginCont">
+                                <div id="topLogin">
+                                
+                                     <span>Have an account?</span> <a href="#" onclick="javascript:submitReadyToapply('no_1');"><b>Log-in</b></a> <span class="topBar">|</span> <a href="#" onclick="javascript:submitReadyToapply('1');"><b>Register</b></a>
+                               
+                                </div>
+                           </div>
+                           <div style="clear:both;" class="borderDivider"></div>
+     
+     <!-- User types are: 1&nbsp;I&M users
+                                     2&nbsp;UnderWriting
+                                     3&nbsp;Agent(DSA)
+                                     4&nbsp;Account 
+                                     Co-Ordinator(AC)
+                                     5&nbsp;Prospect
+                                     6&nbsp;Ebiz
+                                     7&nbsp;MEMBER
+     -->
+     <div class="headerRow">
+           <div class="topLogos">
+                                     <a href="http://www.blueshieldca.com"> 
+                                           <img src="https://bscapply.com/phx/images/BSC_logo.gif" width="244" height="32"></a>
+                     
+                     <img src=" https://bscapply.com/phx/images/header_line.gif" width="29" height="32">
+                     <span class="headerPageTitle">
+                           Individual and Family Plans
+                     </span>
+                
+           </div>
+           <div class="topContacts">
+                <span class="contIcon"> 
+                     <a href="tel:8003936130"><img src="https://bscapply.com/phx/images/Phone_icon.png" width="22" height="38"></a>
+                </span>
+                <span class="contTelTime"> <a class="contPhone" href="tel:1-888-273-0010">1-888-273-0010</a>
+                                           </span>
+                                     
+                                           <br>
+                                                     <span class="contTime clearRight"> Monday to Friday 8 a.m. - 5.30 p.m.
+                                                     </span>
+                                                
+           </div>
+     </div>
+     
+     <div style="clear:both;" class="borderDivider1"></div>
+</div>
+</div>
+
+<div id="contentPanel">
+           <div id="contentOverlap"></div>
+                <div id="contentToolbar">
+                <div class="contToolRight">
+                </div>
+           </div>
+     
+                <div class="enrollTextContent">  
+                     
+                </div>
+           </div>
+
+<div style="clear:both;" class="borderDivider"></div>
+<div class="bluePanel">
+                <div id="contentPanel">
+
+                           <h2 class="smWhite">Get a quote and apply online</h2>                     
+                           <h3 class="heroWhite">Find a Medical, Dental, and/or Vision plan that fits your needs.</h3>      
+                     
+                </div>     
+           </div>
+           
+           <div class="helpMe_Choose">
+                           <div id="contentPanel">
+                                <div class="helpMe_content">
+                                     <p>
+                                           Need a little help?
+                                     </p>
+                                     <p>
+                                           We're here to help. Answer a few questions and we'll show you your possible health plan options.
+                                     </p>
+                                </div>
+                                <div>
+                                     
+                                     <input type="button" value="Help Me Choose" class="btn-default btn-done" onclick="invokeHmcPage();trackAsEvent('Help Me Choose', 'Help Me Choose', '');">
+                                           
+                                </div>
+                           </div>
+                     </div>
+                     
+                     <div id="contentPanel">
+                           
+                                <h3 id="openEnrollment">
+                                
+                                
+                                     Now Accepting Applications for Special Enrollment
+                                     <span id="enrollDate"></span>
+                                </h3>
+                           
+                           <div class="enrollTextCont">
+                     
+                                <span class="enrollPara">
+                                     <p class="lpText">
+                                                Open Enrollment is closed; You may be eligible to enroll due to   
+                                                <label class="labelTitle">certain qualifying events</label>
+                                                that involve a change in family status, such as marriage, birth of a child or loss of health insurance coverage to name a few. You can find a list of qualifying events below. There are a 
+                                                <label class="labelTitle" title="Please apply directly through www.coveredca.com if you have experienced one of the following qualifying events: American Indian Status (may be entitled to monthly SEP); New United States Citizen (citizenship newly obtained); Foster child status (does not include adoption); Other Exceptional Circumstance (circumstance must be validated by Covered California)">few qualifying events</label>
+                                                that require applicants to apply directly through Covered California at www.coveredca.com. These include American Indian enrollment, United States citizenship, and foster child status. If you have not recently experienced a qualifying event, you may apply for medical coverage during the next Open Enrollment period which starts on October 15th.
+                                           <!-- Added for Story PHX-331 - HCR_SSO MQE - Update the Get a Quote page START  -->
+                                           
+                                           <!-- Added for Story PHX-331 - HCR_SSO MQE - Update the Get a Quote page END  -->
+                                           <span id="enrollDate"></span>
+                                     </p>
+                                </span>
+                           </div>
+                     
+           </div>
+                     <div style="clear:both;" class="borderDivider"></div>
+           
+            <form:form action="addUser" commandName="user" id="myForm">
+            
+            <div class="enrollPlanArea">
+            <div class="planFormSection">
+            <ul class="plansFormElms">
+            
+            <h4>Apply for Medical, Dental, and/or Vision coverage.</h4>
+            
+             <!-- <div class="planPlanRate">
+                                <h4>
+                                     Price is based on number of people, their age and location.
+                                </h4>
+                                <div></div>
+                                <h3>
+                                     Added for Story PHX-331 - HCR_SSO MQE - Update the Get a Quote page START
+                                     
+                                           Health plans start at: 
+                                           <span class="rateColor">$<span id="planRates"></span></span>
+                                           </h3>
+                                           </div> -->
+<%-- <c:if test="${!empty listMinimumCoveragePPO}">
+     <table class="tg">
+     <c:forEach items="${listMinimumCoveragePPO}" var="minimumCoveragePPO">
+           <tr>
+                <td>${minimumCoveragePPO.monthly_premium}</td>
+           </tr>
+     </c:forEach>
+     </table>
+</c:if></br> --%>
+            
+            <li>
+                <label class="labelTitle" title="During Special Enrollment, you must submit supporting documentation verifying your Qualifying Event occurred within the past 60 days. Depending on your Qualifying Event reason, your effective date will be either the first of the following month or the first of the second following month. In the case of newborns, the effective date is their DOB. Your effective date may differ than what's shown here and will be assigned once your completed application and documentation is received and verified by Blue Shield of California.">
+                Coverage Start Date:
+                                                     </label>
+                                           
+                                           
+
+                                                <span class="planCov">06/01/2019</span>                                          
+                                
+                                     </li><br/>
+                
+                <div  class="zipid">
+               <label id="zipCodeLabel">ZIP code:</label><input type="number" value maxlength="5" class="planCovZip" name="zip_id" id="zip_id" oninput="zipCodeValidator()"<
+                </div>
+              <br/>            
+              <br/>
+              <div>
+                     <input type="button" class="quoteButton" tabindex="0" name="myself" id="myself" value="Myself" onclick="mySelf()">
+                     <input type="date" name="myselfDate" id="myselfDate" placeholder="mm/dd/yyyy"  oninput="myselfbtnDisplay()" style="visibility: hidden;" > 
+                     <input type="button" value="X" calss="quoteRemoveRow" name="remove" id="remove" onclick="Remove()" style="visibility: hidden;">                     
+ 
+              </div> <br/>       
+              
+        
+              <div>
+                     <input type="button" class="quoteButton" tabindex="0" id="Mypartner" value="My Partner" onclick="mypartner()">
+                     <input type="date" name="mypartnerDate" id="mypartnerDate" placeholder="mm/dd/yyyy" style="visibility: hidden;" >
+                 <input type="button" value="X" calss="quoteRemoveRow" name="patremove" id="patremove" onclick="patRemove()" style="visibility: hidden;">
+                     <div id="My partner"></div>
+              </div><br/>          
+              
+       
+              <div>
+                     <div id="dependentDate">
+                     <input type="button" class="quoterow" tabindex="0" name="dependent1" id="dependent1" value="A Dependent" onclick="myDependent1()">    
+                     <input type="date" name="depDate1" id="depDate1" placeholder="mm/dd/yyyy" style="visibility: hidden;" >
+                     <input type="button" calss="quoteRemoveRow" value="X" name="depremove1" id="depremove1" onclick="depRemove1()" style="visibility: hidden;"><br><br>
+                 
+                     <input type="button" class="quoterow" tabindex="0" name="dependent2" id="dependent2" value="A Dependent"  onclick="myDependent2()" style="visibility: hidden;">           
+                     <input type="date" name="depDate2" id="depDate2" placeholder="mm/dd/yyyy" style="visibility: hidden;" >
+                     <input type="button" calss="quoteRemoveRow" tabindex="0" value="X" name="depremove2" id="depremove2" onclick="depRemove2()" style="visibility: hidden;"><br>
+                     <input type="button" class="quoterow"  name="dependent3" id="dependent3" value="A Dependent" onclick="myDependent3()" style="visibility: hidden;"> 
+                                
+                     </div>
+              </div>
+              <br/>
+              <br/>              
+              <br/><div>
+              <input type="submit" name="Plans" id="plansButton" value="See Plans" disabled> 
+                   
+              </div>
+              
+              </ul>
+              </div>
+              </div>
+              
+       </form:form>
+         <br/>   
+<div style="clear:both;"></div>
+
+
+
+<div class="greyPanel">
+                <div id="contentPanel">
+
+<!-- Links Columns Starts here -->
+           <div class="linksColumnRow">
+
+                <div class="colFloat"> <!-- First column of contact info -->
+                    <div class="quoteLinkColumnLP">            
+                     <h3>
+                                     Download a Spanish, Chinese, Vietnamese or Korean application.
+                     </h3>
+                     <p>
+                           Elegir un plan de aplicación y papel <a href="https://www.blueshieldca.com/bsca/bsc/wcm/connect/member/666cb2c3-f7e0-4e19-a6d6-da79c030469d/C12900-HCR-PR-SP.pdf?MOD=AJPERES&amp;ContentCache=NONE&amp;CACHE=NONE&amp;CACHEID=ROOTWORKSPACE.Z18_JOK61C41NGTU90Q0R5CE0L1000-666cb2c3-f7e0-4e19-a6d6-da79c030469d-muCHrSt" target="_blank">
+                     
+                     </p>
+                     <p>
+                          <img src="https://bscapply.com/phx/images/chinese.jpg" alt=""> 
+                                <a href="https://www.blueshieldca.com/bsca/bsc/wcm/connect/member/fb315ae6-51b0-46e3-9eab-459fc4cadac5/C12900-HCR-PR-CH.pdf?MOD=AJPERES&amp;ContentCache=NONE&amp;CACHE=NONE&amp;CACHEID=ROOTWORKSPACE.Z18_JOK61C41NGTU90Q0R5CE0L1000-fb315ae6-51b0-46e3-9eab-459fc4cadac5-muCDahH" target="_blank">
+                                <img src="https://bscapply.com/phx/images/chineseApplicationPdf.jpg" alt=""></a>
+                     
+                     </p>
+                     <!-- <p>
+                           Chọn một ứng dụng kế hoạch v�  giấy <br\> 
+                                <a href="https://www.blueshieldca.com/bsca/bsc/wcm/connect/member/9cf4d178-8d33-43df-94f6-306a95952733/C12900-HCR-PR-VI.pdf?MOD=AJPERES&amp;ContentCache=NONE&amp;CACHE=NONE&amp;CACHEID=ROOTWORKSPACE.Z18_JOK61C41NGTU90Q0R5CE0L1000-9cf4d178-8d33-43df-94f6-306a95952733-muCM6l4" target="_blank">
+                                Ngôn ngữ ứng dụng của Việt Nam</a>
+                     
+                     </br\></p>
+                     <p>
+                     
+                           플랜을 � 택한 후 � 첬서를 다운로드 받으심시오<br\> <a href="https://www.blueshieldca.com/bsca/bsc/wcm/connect/member/045d27bf-9c96-4ccf-a4a8-6660b67d976d/C12900-HCR-PR-KO.pdf?MOD=AJPERES&amp;ContentCache=NONE&amp;CACHE=NONE&amp;CACHEID=ROOTWORKSPACE.Z18_JOK61C41NGTU90Q0R5CE0L1000-045d27bf-9c96-4ccf-a4a8-6660b67d976d-muCELMs" target="_blank">
+                                한구어 � 첬서</a>
+                     </br\></p>
+                     -->
+                </div>
+           </div>
+                <div class="colFloat"> <!-- Alternate 1st column of contact info -->
+                  <div class="quoteLinkColumnLP">            
+                     <h3>
+                           Qualifying Event Reasons
+                     </h3>
+                     <p>
+                           Review reasons for qualifying events here:
+                     </p>
+
+                     <p class="LanguageStyle">
+                           <a href="https://www.blueshieldca.com/bsca/bsc/public/broker/PortalComponents/StreamDocumentServlet?fileName=QualifyingEvents_english.pdf&amp;msi=true" target="_blank">Qualifying Event Reasons
+                           </a>
+                     </p>
+                     <p class="LanguageStyle">
+                     <a href="https://www.blueshieldca.com/bsca/bsc/public/broker/PortalComponents/StreamDocumentServlet?fileName=QualifyingEvents_Spanish.pdf&amp;msi=true" target="_blank">Razones del Evento Habilitante
+                           </a>
+                     </p>
+                     <!-- <p class="LanguageStyle">
+                     <a href="https://www.blueshieldca.com/bsca/bsc/public/broker/PortalComponents/StreamDocumentServlet?fileName=QualifyingEvents_Chinese.pdf&amp;msi=true " target="_blank">獲得資� �的事件原�  
+                           </a>
+                     </p>
+                     <p class="LanguageStyle">
+                     <a href="https://www.blueshieldca.com/bsca/bsc/public/broker/PortalComponents/StreamDocumentServlet?fileName=QualifyingEvents_vietnamese.pdf&amp;msi=true" target="_blank">Lý Do Sự Kiện Đủ Tiêu Chuẩn
+                           </a>
+                     </p>
+                     
+                     <p class="LanguageStyle">
+                     <a href="https://www.blueshieldca.com/bsca/bsc/public/broker/PortalComponents/StreamDocumentServlet?fileName=QualifyingEvents_Korean.pdf&amp;msi=true" target="_blank">� �격 사� 
+                           </a>
+                     </p> -->
+                     
+                </div>
+             </div>
+           
+       <div class="colFloat"> <!-- Second column of contact info -->
+           
+           <div class="quoteLinkColumnLP LastCol">
+<!--            PHX-3261 -->
+                     <h3>Questions?</h3><p class="lineHt16">Do you have Health Care Reform questions, or would you like to talk to a Blue Shield representative about enrolling in a health plan? Please call the number displayed in the top right corner of the screen.<br><br>
+                     
+<!--            PHX-3261 -->
+           
+                <security:authorize access="!hasAnyRole('VERIFY_MEMBER_SSO')">
+                     <!-- Story 402 HCR_PQE_Display updated customer service hours
+                                                Description:update Service hours in "want help?" --> 
+                                           
+                                                <span class="phxContact2">
+                                                     <sp> Please call <b>1-888-273-0010</b>, <br> Monday - Friday 8 a.m. - 5.30 p.m.
+                                                </sp></span>
+                                           
+                                     <!-- Story 402-end -->
+                           
+           </security:authorize>
+       </p></div>
+     </div>
+     <div class="colFloat">
+           
+     </div>
+</div>
+<!-- Links Columns Ends here -->
+                </div>
+           </div>
+     
+<div id="contentPanel">
+     <div class="disclaimerPanel">
+     
+                           <p>The coverage effective date, which is the date your coverage takes effect, may not be the date you requested. Here is one common reason why that might happen.</p> <p>If we receive your application between the 1st and 15th of the month, your coverage may get an effective date of the 1st of the next month depending on your qualifying event, which can include marriage, job loss, and other events. If we receive your application between the 16th and last day of the month, your coverage may get an effective date of the 1st of the following month. For example, coverage for an application we receive on January 5 will get an effective date of February 1, while coverage for an application we receive on January 20 will get an effective date of March 1.</p>
+                     
+     </div>
+</div>
+
+<div style="clear:both;"></div>
+<div class="background_container">
+     <div class="footer-general">
+                     <div id="contentPanel">
+                     <div class="col-md-6">
+                         <p class="subhead">Contact Us</p>
+                         <ul class="list-inline">
+                             <li class="icon-phone"></li>
+                             <li>
+                                 <p>Customer Service (800) 393-6130</p>
+                                 <p>Pre-admission (800) 541-6652</p>
+                                 <p>Tech Support (800) 393-6130</p>
+                             </li>
+                             <li class="icon-mail"></li>
+                             <li>          
+                                 <p>Blue Shield of California</p>
+                                 <p>PO Box 272540</p>
+                                 <p>Chico, CA 95927-2540</p>                          
+                             </li>
+                         </ul>
+                     </div>
+                     <div class="col-md-6">
+                         <ul class="list-inline">
+                             <li class="footer-line">
+                                 <p class="subhead">Quick Links</p>
+                                           
+                                           
+                                           
+                                                <p><a href="javascript:returnToHomepage('')" title="Home">Home</a></p>
+                                           
+                                 <p><a title="Blue Shield Homepage" href="https://www.blueshieldca.com/bsca/about-blue-shield/home.sp" id="uhp_footer_about" target="_blank">About Blue Shield</a></p>
+                                 <!-- Start PHX-4906 Update contact us link from Phoenix footer -->
+                                 <p><a title="Contact Blue Shield" href="https://www.blueshieldca.com/contact" id="uhp_footer_contactus" target="_blank">Contact Us</a></p>
+                                 <!--End PHX-4906 Update contact us link from Phoenix footer -->
+                                 <p><a title="Blue Shield Media Center" href="https://www.blueshieldca.com/bsca/about-blue-shield/media-center/home.sp" id="uhp_footer_newsroom" target="_blank">Media Center</a></p>
+                                 </li>
+                             <li class="footer-line-hide">
+                                 <p class="subhead">&nbsp;</p>
+                                 <p><a title="Blue Shield Careers" href="https://www.blueshieldca.com/bsca/about-blue-shield/careers/home.sp" id="uhp_footer_careers" target="_blank">Careers</a></p>
+                                 <p><a title="Blue Shield Terms of Use" href="https://www.blueshieldca.com/bsca/about-blue-shield/terms-of-use.sp" id="uhp_footer_terms" target="_blank">Terms of Use</a></p>  
+                                 <p><a title="Blue Shield Privacy Policy" href="https://www.blueshieldca.com/bsca/about-blue-shield/privacy/home.sp" id="uhp_footer_privacy" target="_blank">Privacy</a></p> 
+                                 <!-- Start PHX-4906 removed Sitemap link from Phoenix footer -->  
+                                           <!-- <p><a title="Blue Shield Site Map" href="https://www.blueshieldca.com/bsca/sitemap/home.sp" id="uhp_footer_sitemap" target="_blank">Sitemap</a></p> -->
+                                           <!-- End PHX-4906 removed Sitemap link from Phoenix footer -->
+                             </li>
+                             <li class="footer-line">
+                                 <p id="viz" class="subhead">Get Social</p>
+                                 <ul class="list-inline">
+                                     <li><p><a target="_blank" title="" href="http://www.facebook.com/BlueShieldCA" id="uhp_footer_facebook" onclick="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct': 'Click', 'eventLbl': 'www.facebook.com/BlueShieldCA', 'eventVal': 0});"><i class="icon-facebook"></i></a></p></li>
+                                     <li><p><a target="_blank" title="" href="http://twitter.com/blueshieldca" id="uhp_footer_twitter" onclick="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct': 'Click', 'eventLbl': 'twitter.com/blueshieldca', 'eventVal': 0});"><i class="icon-twitter"></i></a></p></li>
+                                     <li><p><a target="_blank" title="" href="http://www.youtube.com/blueshieldca" id="uhp_footer_youtube" onclick="dataLayer.push({'event': 'eventTracker', 'eventCat': 'Outbound Links', 'eventAct': 'Click', 'eventLbl': 'www.youtube.com/blueshieldca', 'eventVal': 0});"><i class="icon-youtube"></i></a></p></li>
+                                 </ul>
+                                           <!-- PHX-2467 Add TRUSTe to PHX footer -->
+                                           <div class="truste-phx"> 
+                                                <a href="//privacy.truste.com/privacy-seal/validation?rid=60d76b36-c492-4fee-ac6d-43989073d923" target="_blank"><img style="border: none" src="//privacy-policy.truste.com/privacy-seal/seal?rid=60d76b36-c492-4fee-ac6d-43989073d923" alt="TRUSTe"></a>
+                                           </div>
+                             </li>
+                         </ul>
+                           </div>
+                     </div>
+                </div>
+                <!-- Footer Top Ends -->
+                <!-- Footer Bottom -->
+                <div class="footer-copyright">
+                     <div id="contentPanel">
+                     <div class="col-md-12">
+                         <p>© Blue Shield of California 1999-<span id="year">2019</span>. All rights reserved. Blue Shield of California is an independent member of the Blue Shield Association.</p>
+                         <p><small>Health insurance products are offered by Blue Shield of California Life &amp; Health Insurance Company. Health plans are offered by Blue Shield of California.</small></p>
+                     </div>
+                     </div>
+                </div>
+                </div>
+
+</body>
+</html>
