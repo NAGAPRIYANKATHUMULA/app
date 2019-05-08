@@ -1,0 +1,259 @@
+INDEX.JSP
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="app.js"></script>
+
+</head>
+<body onload="load()">
+
+<p><image src="https://healthysolutionsinsuranceservices.com/wp-content/uploads/2016/10/Blue_Shield_of_California.svg_-810x213.png" align="center" height="100" width="250">
+   </image> Individual and Family plans:</p>
+   <div id="cartItem" class="close"></div>
+<hr>
+
+<div class="tab">
+	
+	  <button class="tablinks">Medical plans
+	  <image src="https://www.kent.edu/sites/default/files/og_menu_utilities_images/16-0922-8.gif" align="center" class="tablinks" height="60" width="50">
+      </button></image>
+           
+           
+      <button class="tablinks" >Dental plans
+      <image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMkSlsQKTWyjQ2figPCe4tVx6JOco1Wo4pvDbT14TfH2BXvNbUOg" align="center" class="tablinks" height="80" width="80">
+      </button></image>
+           
+      <button class="tablinks" >vision plans
+      <image class="tablinks" src="https://image.shutterstock.com/image-vector/vector-round-glasses-icon-symbol-260nw-342114746.jpg" align="center" height="60" width="60">
+      </button></image>
+            
+             <button class="tablinks" id="cart" style="float:right; color:#008CBA;">Shopping Cart:<span id="cnt">0</span></button>           
+    </div> 
+    
+<div id="Medical"   >
+     
+   	 <h3 style="color: #008CBA;"  align="left" >Medical Plan Quotes</h3>
+		
+		<p> you may select up to two plans to compare or you may apply for a plan</p>
+			Sort by:<select style=" padding: 14px 28px";>
+			<option value="Monthly Premium">Monthly Premium</option>
+			<option value="Deductible">Deductible</option>
+			<option value="Co-Payment Max">Co-Payment Max</option>
+			</select> 
+	
+	<button class="button" style=" padding: 14px 28px"; onclick="check()">Compare
+    </div>
+  
+    <div id="Dental" class="tabcontent"></div>
+    <div id="vision" class="tabcontent"></div>
+   
+<div id="error"> </div>
+<div style="float: center;">
+
+     <div  style="display: inline-block;padding: 10px;">
+       	<b><p id="head1"></p></b>
+           <p><br/><br/><br/><br/><br/><br/><br/><br/></p>
+        <b><p id="row1"></p></b>
+            <p><br/><br/></p>
+        <b> <p id="row2"></p></b>
+        </div>
+        
+      <div id="1" style="display: inline-block;padding: 10px;">
+            <strong><p id="head2"></p></strong>
+            <button class="button1" id="1" onclick="add(this.id)">Add To Cart</button><br />
+            <input type="checkbox" name="item" value="1">Compare<br />
+            <p><br/></p>
+            <p id="r11"></p>
+            <p id="r12"></p>
+            <p><br/></p>
+            <p id="r13"></p>
+            <p id="r14"></p>
+            
+        </div>
+        
+        <div id="2" style="display: inline-block; padding: 10px;">
+           <strong> <p id="head3"></p></strong>
+           <button class="button1" id="2" onclick="add(this.id)">Add To Cart</button><br />
+            <input type="checkbox" name="item" value="2">Compare<br />
+            <p><br/></p>
+            <p id="r21"></p>
+            <p id="r22"></p>
+             <p><br/></p>
+            <p id="r23"></p>
+            <p id="r24"></p>
+        </div>
+        
+        <div id="3" style="display: inline-block; padding:10px;">
+          <strong><p id="head4"></p></strong>
+           <button class="button1" id="3"  onclick="add(this.id)">Add To Cart</button><br />
+            <input type="checkbox" name="item" value="3">Compare<br />
+            <p><br/></p>
+            <p id="r31"></p>
+            <p id="r32"></p>
+             <p><br/></p>
+            <p id="r33"></p>
+            <p id="r34"></p>
+        </div>
+        
+    </div>
+    <script>
+    	document.getElementById("cart").addEventListener("click",function(e)
+    			{
+    			document.getElementById("cartItem").className="open";
+    			});
+    	document.getElementById("cartItem").addEventListener("click",function(e){
+    		document.getElementById("cartItem").className="close";
+    	});
+    </script>
+    </body>
+</html>
+
+
+
+
+
+APP.JS
+var cartCount;
+var i=0;
+var data =[{
+              
+                "head":"Plan Name Monthly Rate/Premium",
+                "row1":"Calendar Year Medical Deductible",
+                "row2":"Calendar Year Out-of-Pocket Maximum"
+          
+            },
+            {   
+                "head":"Minimum Coverage PPO $284.70 ",    
+                "r11":"Individual - $7,900",
+                "r12":"Family - $15,800",
+                "r13":"Individual - $7,900",
+                "r14":"Family - $15,800"
+
+            },
+            {
+                "head":"Bronze 60 HDHP PPO $288.98 ",
+                "r21":"Individual - $6,000",
+                "r22":"Family - $12,000",
+                "r23":"Individual - $6,650",
+                "r24":"Family - $13,300"
+            },
+            {
+                "head":"Bronze 60 PPO $291.97 /mo", 
+                "r31":"Individual - $6,300",
+                "r32":"Family - $12,600",
+                "r33":"Individual - $7,550",
+                "r34":"Family - $15,100"
+            }]
+
+
+	
+function add(value)
+{
+	if(!cartCount)
+		{
+			++i;
+			checkOutBtn='<div><button style="background-color:#008CBA; padding:10px; border-radius:10px;">CheckOut</button></div>';
+			/*<input type="button" value="X" name="remove" id="remove" onclick="remove()" >*/
+			rembtn='<div><button>X</button></div>';
+							cartCount=data[value];
+							document.getElementById('cnt').innerHTML=i;
+							document.getElementById('cartItem').innerHTML=cartCount.head+rembtn+checkOutBtn;
+		}
+
+}
+function check()
+
+{
+
+	var checked = 0;
+	
+	var j =0;
+	
+	var d = document.getElementsByName('item');
+	
+	for(i=0;i<d.length;i++){
+	
+	if(d[i].checked)
+
+	{
+
+		checked++;
+		
+		if(checked > 2)
+
+		{
+
+				document.getElementById('error').innerHTML = '<p>you can compare only 2 planes </p>';
+				
+				document.getElementById('error').style="display:block"
+
+		}
+
+		else{
+
+				document.getElementById('error').style="display:none";
+
+			}
+
+}
+
+if((checked >= 1 ) ){
+
+	for(j=0;j<d.length;j++)
+
+			if((!d[j].checked)){
+
+					document.getElementById(d[j].value).style="display:none"; 
+
+			} 
+
+	} 
+
+ } 
+
+}
+
+
+    
+    
+    function load(){
+        //for side headings
+        document.getElementById('head1').innerHTML=data[0].head;
+        document.getElementById('row1').innerHTML=data[0].row1;
+        document.getElementById('row2').innerHTML=data[0].row2;
+        
+        // for plan 1
+   
+        document.getElementById('head2').innerHTML=data[1].head;
+        document.getElementById('r11').innerHTML=data[1].r11;
+        document.getElementById('r12').innerHTML=data[1].r12;
+        document.getElementById('r13').innerHTML=data[1].r13;
+        document.getElementById('r14').innerHTML=data[1].r14;
+
+        // for plan 2
+     
+        document.getElementById('head3').innerHTML=data[2].head;
+        document.getElementById('r21').innerHTML=data[2].r21;
+        document.getElementById('r22').innerHTML=data[2].r22;
+        document.getElementById('r23').innerHTML=data[2].r23;
+        document.getElementById('r24').innerHTML=data[2].r24;
+
+        // for plan 3
+    
+        document.getElementById('head4').innerHTML=data[3].head;
+        document.getElementById('r31').innerHTML=data[3].r31;
+        document.getElementById('r32').innerHTML=data[3].r32;
+        document.getElementById('r33').innerHTML=data[3].r33;
+        document.getElementById('r34').innerHTML=data[3].r34;
+        
+        document.getElementById('cnt').innerHtml=0;
+    }
+
+
+   
+
+
